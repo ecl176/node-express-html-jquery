@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+   		<form action="/ajax" method="post">
+   			Name:<input type="text" id="name">
+    		ID:<input type="text" id="val">
+   		</form>
+    	<button id="btn" >提交</button>
+    </body>
+	<script src="/js/jquery-1.11.1.js"></script>
+    <script>
+		$('#btn').click(function(){
+					var data = {
+						name:$('#name').val(),
+						id:$('#val').val()
+					};
+					$.ajax({
+						type:'post',
+						url:'ajax',
+						data:data,
+						dataType:'json',
+						cache:false,
+						success:function(data){
+							console.log(data);
+						},
+						error:function(){
+							console.log('error');
+						}
+					})
+				})
+    </script>
+</html>
